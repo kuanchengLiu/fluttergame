@@ -1,6 +1,7 @@
-# homeworktwo
+# This is a final homework for university's class -- Mobile App Software Implementation 
 
-A new Flutter project.
+- I have to used the "dart" language to finish it
+- A Novice engineer's side project
 
 ## Getting Started
 
@@ -15,3 +16,5 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 # fluttergame
+
+- This is a animate guessing game! it's just have fun ><
