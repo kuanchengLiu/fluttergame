@@ -15,14 +15,18 @@ class ScoreResult extends StatelessWidget {
       appBar: AppBar(
         title: Text(_title),
       ),
-      body: SafeArea(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('images/c.JPG'),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.0),
-          
           child: ScoreResultView(FinalScore),
         ),
       ),
     );
-    
   }
 }

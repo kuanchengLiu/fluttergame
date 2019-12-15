@@ -5,6 +5,7 @@ import 'package:homeworktwo/scoreResult.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 var questionNumber = 0;
+int score = 0; //測驗成績
 
 class QuizeView extends State<QuizController> {
   @override
@@ -12,8 +13,6 @@ class QuizeView extends State<QuizController> {
     List<Icon> scoreKeeper = [];
 
     QuizBrain qb = QuizBrain();
-
-    int score = 0; //測驗成績
 
     void checkAnswer(String userAnswer) {
       if (questionNumber < 5) {
@@ -60,6 +59,23 @@ class QuizeView extends State<QuizController> {
             child: Center(
               child: Text(
                 qb.getQuestionText(questionNumber),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 25.0,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          ),
+        ),
+        Expanded(
+          //問題區
+          flex: 1,
+          child: Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Center(
+              child: Text(
+                '分數：' + score.toString(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,

@@ -15,7 +15,7 @@ class LobbyView extends StatelessWidget {
             child: CircleAvatar(
                 backgroundColor: Colors.white,
                 radius: 100.0,
-                backgroundImage: AssetImage('images/me.jpg')),
+                backgroundImage: AssetImage('images/d.GIF')),
           ),
           Text(
             'Lets play a game',
