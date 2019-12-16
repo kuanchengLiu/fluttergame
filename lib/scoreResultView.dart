@@ -8,20 +8,15 @@ class ScoreResultView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      
         child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        
         Expanded(
           flex: 5,
-          
           child: Padding(
-            
             padding: EdgeInsets.all(10.0),
             child: Center(
-              
               child: Text(
                 'your final point: \n' + scores.toString(),
                 textAlign: TextAlign.center,

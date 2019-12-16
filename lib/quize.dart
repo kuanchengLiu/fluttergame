@@ -10,7 +10,6 @@ class Quize extends StatelessWidget {
       ),
       body: SafeArea(
         child: Padding(
-          
           padding: EdgeInsets.symmetric(horizontal: 10.0),
           child: QuizController(),
         ),

@@ -1,0 +1,8 @@
+void populateDb(Database database, int version) async {
+  await database.execute("CREATE TABLE Customer ("
+          "id INTEGER PRIMARY KEY,"
+          "first_name TEXT,"
+          "last_name TEXT,"
+          "email TEXT"
+          ")");
+}
