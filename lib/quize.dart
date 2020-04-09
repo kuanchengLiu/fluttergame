@@ -12,6 +12,7 @@ class Quize extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.0),
           child: QuizController(),
+          
         ),
       ),
     );

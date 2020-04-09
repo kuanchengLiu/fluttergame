@@ -10,7 +10,7 @@ class Lobby extends StatelessWidget {
     return MaterialApp(
         title: _title,
         home: Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.black,
           appBar: AppBar(title: const Text(_title)),
           body: LobbyView(),
         ));

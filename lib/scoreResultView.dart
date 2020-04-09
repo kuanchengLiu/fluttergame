@@ -18,10 +18,10 @@ class ScoreResultView extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                'your final point: \n' + scores.toString(),
+                'your final point: \n' + scores.toString() + '\r\n答對題數 \r\n' + scores.toString()+'/2',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontSize: 100.0,
+                    fontSize: 70.0,
                     color: Colors.yellow,
                     fontFamily: "berkshireSwash"),
               ),

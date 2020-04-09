@@ -16,12 +16,12 @@ class ScoreResult extends StatelessWidget {
         title: Text(_title),
       ),
       body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('images/c.JPG'),
-            fit: BoxFit.cover,
-          ),
-        ),
+        // decoration: BoxDecoration(
+        //   image: DecorationImage(
+        //     image: AssetImage('images/c.JPG'),
+        //     fit: BoxFit.cover,
+        //   ),
+        // ),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.0),
           child: ScoreResultView(FinalScore),

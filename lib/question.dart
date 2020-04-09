@@ -12,10 +12,10 @@ class Question {
 class Ans {
   String questAnsA, questAnsB, questAnsC, questAnsD;
 
-  Ans({String a, String b, String c, String d}) {
+  Ans({String a, String b, String c}) {
     questAnsA = a;
     questAnsB = b;
     questAnsC = c;
-    questAnsD = d;
+
   }
 }

@@ -49,6 +49,9 @@ flutter:
    - images/me.jpg
    - images/c.JPG
    - images/d.GIF
+   - images/quiz.png
+   - images/sugar.jpg
+   - images/tiger.jpg
 
   fonts:
     - family: berkshireSwash

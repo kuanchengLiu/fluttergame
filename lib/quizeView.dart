@@ -15,7 +15,7 @@ class QuizeView extends State<QuizController> {
     QuizBrain qb = QuizBrain();
 
     void checkAnswer(String userAnswer) {
-      if (questionNumber < 5) {
+      if (questionNumber < 2) {
         if (userAnswer == qb.getQuestionAnswer(questionNumber)) {
           //答對了
           scoreKeeper.add(Icon(
@@ -23,7 +23,8 @@ class QuizeView extends State<QuizController> {
             color: Colors.green,
           ));
           score++;
-          rightAlert(context);
+          print(qb.getQuestionAnswerString(questionNumber));
+          rightAlert(context, qb.getQuestionAnswerString(questionNumber));
           print(qb.getQuestionText(questionNumber));
         } else {
           //答錯了
@@ -31,7 +32,7 @@ class QuizeView extends State<QuizController> {
             Icons.close,
             color: Colors.red,
           ));
-          wrongAlert(context);
+          wrongAlert(context, qb.getQuestionAnswerString(questionNumber));
         }
       } else {
         questionNumber = 0;
@@ -39,8 +40,8 @@ class QuizeView extends State<QuizController> {
             MaterialPageRoute(builder: (context) => ScoreResult(score)));
         return;
       }
-      if (questionNumber == 4)
-        qb.setQuestionText(questionNumber + 1, '測驗已完成，您的成績為$score分');
+      if (questionNumber == 2)
+        qb.setQuestionText(questionNumber + 1, '測驗已完成，您的成績為$score分 答對$score/2');
 
       questionNumber += 1;
       print(questionNumber);
@@ -53,7 +54,7 @@ class QuizeView extends State<QuizController> {
       children: <Widget>[
         Expanded(
           //問題區
-          flex: 5,
+          flex: 2,
           child: Padding(
             padding: EdgeInsets.all(10.0),
             child: Center(
@@ -70,18 +71,14 @@ class QuizeView extends State<QuizController> {
         ),
         Expanded(
           //問題區
-          flex: 1,
+          flex: 2,
           child: Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: EdgeInsets.only(bottom: 100.0),
             child: Center(
-              child: Text(
-                '分數：' + score.toString(),
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 25.0,
-                  color: Colors.black,
-                ),
-              ),
+              child: CircleAvatar(
+                  backgroundColor: Colors.black,
+                  radius: 100.0,
+                  backgroundImage: AssetImage('images/quiz.png')),
             ),
           ),
         ),
@@ -89,112 +86,71 @@ class QuizeView extends State<QuizController> {
           Expanded(
             //A區
             flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.only(
-                left: 10,
-                top: 10,
-                right: 5,
-                bottom: 20,
-              ),
-              child: FlatButton(
-                textColor: Colors.white,
-                color: Colors.green,
-                child: Text(
-                  'A:\r\n ' + qb.getAnsA(questionNumber),
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0,
-                  ),
+            // child: Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            child: FlatButton(
+              textColor: Colors.white,
+              color: Colors.red,
+              child: Text(
+                'A:\r\n ' + qb.getAnsA(questionNumber),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
                 ),
-                onPressed: () {
-                  setState(() {
-                    checkAnswer('A');
-                  });
-                },
               ),
+              onPressed: () {
+                setState(() {
+                  checkAnswer('A');
+                });
+              },
             ),
+            //),
           ),
           Expanded(
             //B區
             flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.only(
-                left: 10,
-                top: 10,
-                right: 5,
-                bottom: 20,
-              ),
-              child: FlatButton(
-                color: Colors.red,
-                child: Text(
-                  'B: \r\n' + qb.getAnsB(questionNumber),
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.white,
-                  ),
+            // child: Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            child: FlatButton(
+              color: Colors.green,
+              child: Text(
+                'B: \r\n' + qb.getAnsB(questionNumber),
+                style: TextStyle(
+                  fontSize: 20.0,
+                  color: Colors.white,
                 ),
-                onPressed: () {
-                  setState(() {
-                    checkAnswer('B');
-                  });
-                },
               ),
+              onPressed: () {
+                setState(() {
+                  checkAnswer('B');
+                });
+              },
             ),
+            //),
           ),
         ]),
         Row(children: <Widget>[
           Expanded(
             //C區
-            child: Padding(
-              padding: const EdgeInsets.only(
-                left: 10,
-                top: 1,
-                right: 5,
-                bottom: 20,
-              ),
-              child: FlatButton(
-                textColor: Colors.white,
-                color: Colors.green,
-                child: Text(
-                  'C: ' + qb.getAnsC(questionNumber),
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0,
-                  ),
+            // child: Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            child: FlatButton(
+              textColor: Colors.white,
+              color: Colors.blue,
+              child: Text(
+                '\r\nC: ' + qb.getAnsC(questionNumber),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
                 ),
-                onPressed: () {
-                  setState(() {
-                    checkAnswer('C');
-                  });
-                },
               ),
+              onPressed: () {
+                setState(() {
+                  checkAnswer('C');
+                });
+              },
             ),
-          ),
-          Expanded(
-            //D區
-            child: Padding(
-              padding: const EdgeInsets.only(
-                left: 10,
-                top: 10,
-                right: 5,
-                bottom: 20,
-              ),
-              child: FlatButton(
-                color: Colors.red,
-                child: Text(
-                  'D: ' + qb.getAnsD(questionNumber),
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.white,
-                  ),
-                ),
-                onPressed: () {
-                  setState(() {
-                    checkAnswer('D');
-                  });
-                },
-              ),
-            ),
+            //),
           ),
         ]),
         Row(
@@ -204,8 +160,10 @@ class QuizeView extends State<QuizController> {
     ));
   }
 
-  rightAlert(context) {
+  rightAlert(contextcontext, String ans) {
     // Reusable alert style
+    QuizBrain qb = QuizBrain();
+    print(qb.getQuestionAnswerString(questionNumber));
     var alertStyle = AlertStyle(
       animationType: AnimationType.grow,
       isCloseButton: false,
@@ -225,11 +183,14 @@ class QuizeView extends State<QuizController> {
       ),
     );
     Alert(
+      image: qb.getQuestionAnswerString(questionNumber) == '虎\r\n'
+          ? Image.asset('images/tiger.jpg')
+          : Image.asset('images/sugar.jpg'),
       context: context,
-      style: alertStyle,
-      type: AlertType.info,
+      // style: alertStyle,
+      // type: AlertType.info,
       title: "答對了!",
-      desc: "不錯喔，請繼續保持下去！",
+      desc: ans,
       buttons: [
         DialogButton(
           child: Text(
@@ -244,7 +205,7 @@ class QuizeView extends State<QuizController> {
     ).show();
   }
 
-  wrongAlert(context) {
+  wrongAlert(context, String ans) {
     // Reusable alert style
     var alertStyle = AlertStyle(
       animationType: AnimationType.grow,
@@ -267,10 +228,12 @@ class QuizeView extends State<QuizController> {
     // Alert dialog using custom alert style
     Alert(
       context: context,
-      style: alertStyle,
-      type: AlertType.info,
+      // style: alertStyle,
+      // type: AlertType.info,
+
       title: "答錯了!",
       desc: "加油，好嗎？！",
+      image: Image.asset('images/quiz.png'),
       buttons: [
         DialogButton(
           child: Text(
